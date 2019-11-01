@@ -1,0 +1,29 @@
+Initialize engine version: 5.0.0f4 (5b98b70ebeb9)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 10.0]
+    Renderer: NVIDIA GeForce 9400 GT  (ID=0x641)
+    Vendor:   NVIDIA
+    VRAM:     499 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.062 seconds
+desktop: 1280x1024 75Hz; virtual: 1280x1024 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\System.dll (this message is harmless)
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 198 -> priority: 1 
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.554037 ms
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 243.
+Total: 0.393581 ms (FindLiveObjects: 0.024873 ms CreateObjectMapping: 0.158383 ms MarkObjects: 0.198253 ms  DeleteObjects: 0.010973 ms)
+
