@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class ScoreCalculationController : MonoBehaviour, IGameManagerObserver {
 	
-	float gameTime;
-	float score;
-	bool isGamePaused;
-	bool isPlayerDead;
-	Text ScoreDisplay;
-	Text scorePauseDisplay;
+	float _gameTime;
+	float _score;
+	bool _isGamePaused;
+	bool _isPlayerDead;
+	Text _scoreDisplay;
+	Text _scorePauseDisplay;
 
 	// Use this for initialization
 	void Start () {
 		GameManager.Instanse.AddObserver (this);
-		ScoreDisplay = GameObject.Find ("ScoreDisplay").GetComponentInChildren<Text>();
-		scorePauseDisplay = GameObject.Find ("PausePanel").GetComponentInChildren<Text> ();
-		score = 0;
+		_scoreDisplay = GameObject.Find ("ScoreDisplay").GetComponentInChildren<Text>();
+		_scorePauseDisplay = GameObject.Find ("PausePanel").GetComponentInChildren<Text> ();
+		_score = 0;
 		DisplayScore ();
 	}
 	
@@ -28,14 +28,14 @@ public class ScoreCalculationController : MonoBehaviour, IGameManagerObserver {
 
 	public void UpdateFields(float time, GAME_DIFFICULTY difficulty, bool isGamePaused, bool isPlayerDead, MOVING_DIRECTION movingDiraction)
 	{
-		gameTime = time;
-		this.isGamePaused = isGamePaused;
-		this.isPlayerDead = isPlayerDead;
-		if (!isGamePaused)
+		_gameTime = time;
+		_isGamePaused = isGamePaused;
+		_isPlayerDead = isPlayerDead;
+		if (!_isGamePaused)
 			CalculateScore (time);
-		if (isPlayerDead) {
+		if (_isPlayerDead) {
 			GameManager.Instanse.RemoveObserver(this);
-			GameManager.Instanse.Score = (int)score;
+			GameManager.Instanse.Score = (int)_score;
 		}
 		DisplayScore ();
 
@@ -43,12 +43,12 @@ public class ScoreCalculationController : MonoBehaviour, IGameManagerObserver {
 
 	public void CalculateScore(float gameTime)
 	{
-		score += gameTime * 1.1f; 
+		_score += gameTime * 1.1f; 
 	}
 
 	public void DisplayScore()
 	{
-		ScoreDisplay.text = Convert.ToInt64(score).ToString();
-		scorePauseDisplay.text = "SCORE: " + Convert.ToInt64(score	).ToString();
+		_scoreDisplay.text = Convert.ToInt64(_score).ToString();
+		_scorePauseDisplay.text = "SCORE: " + Convert.ToInt64(_score	).ToString();
 	}	
 }

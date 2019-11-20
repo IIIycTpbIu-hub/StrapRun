@@ -8,16 +8,16 @@ public class StrapsSpeedCalculationController : MonoBehaviour, IGameManagerObser
 	const int MAX_NORMAL_SPEED_LEVELS_INDEX = 3;
 	const int MAX_HARD_SPEED_LEVELS_INDEX = 4;
 
-	GAME_DIFFICULTY difiiculty;
-	bool isGamePaused;
-	bool isPlayerDead;
-	float currentTime;
-	float changedSpeedTime = 5f;
-	float currentStrapSpeed = 5f;
-	float targetStrapSpeed;
-	float[] speedLevels = {5f, 10f, 14f, 18f, 22f};
-	int currentSpeedFlag = 0;
-	List<ISpeedObserver> strapsList = new List<ISpeedObserver>(); 
+	GAME_DIFFICULTY _difiiculty;
+	bool _isGamePaused;
+	bool _isPlayerDead;
+	float _currentTime;
+	float _changedSpeedTime = 5f;
+	float _currentStrapSpeed = 5f;
+	float _targetStrapSpeed;
+	float[] _speedLevels = {5f, 10f, 14f, 18f, 22f};
+	int _currentSpeedFlag = 0;
+	List<ISpeedObserver> _strapsList = new List<ISpeedObserver>(); 
 
 	// Use this for initialization
 	void Start () {
@@ -31,18 +31,18 @@ public class StrapsSpeedCalculationController : MonoBehaviour, IGameManagerObser
 
 	public void UpdateFields(float time, GAME_DIFFICULTY difficulty, bool isGamePaused, bool isPlayerDead, MOVING_DIRECTION movingDiraction)
 	{
-		this.currentTime = time;
-		this.isGamePaused = isGamePaused;
-		this.isPlayerDead = isPlayerDead;
-		this.difiiculty = difficulty;
-		if (isPlayerDead)
+		_currentTime = time;
+		_isGamePaused = isGamePaused;
+		_isPlayerDead = isPlayerDead;
+		_difiiculty = difficulty;
+		if (_isPlayerDead)
 			GameManager.Instanse.RemoveObserver (this);
 		ChangeSpeedByDifficulty ();
 	}
 
 	void ChangeSpeedByDifficulty()
 	{
-		switch (difiiculty) {
+		switch (_difiiculty) {
 		case GAME_DIFFICULTY.EASY:
 			ChangeSpeed (MAX_EASY_SPEED_LEVELS_INDEX);
 			break;
@@ -57,41 +57,41 @@ public class StrapsSpeedCalculationController : MonoBehaviour, IGameManagerObser
 
 	public void AddObserver(ISpeedObserver observer)
 	{
-		strapsList.Add (observer);
-		observer.UpdateFields (currentStrapSpeed, currentTime, isGamePaused);
+		_strapsList.Add (observer);
+		observer.UpdateFields (_currentStrapSpeed, _currentTime, _isGamePaused);
 	}
 
 	public void RemoveObserver(ISpeedObserver observer)
 	{
-		strapsList.Remove (observer);
+		_strapsList.Remove (observer);
 	}
 
 	public void NotifyObservers()
 	{
-		var tempStrapsList = new List<ISpeedObserver> (strapsList);
+		var tempStrapsList = new List<ISpeedObserver> (_strapsList);
 		foreach (var strap in tempStrapsList) {
-			strap.UpdateFields(currentStrapSpeed, currentTime ,isGamePaused);
+			strap.UpdateFields(_currentStrapSpeed, _currentTime ,_isGamePaused);
 		}
 	}
 
 	void ChangeSpeed (int speedLevelsIndex)
 	{
-		if (currentTime >= changedSpeedTime) {
-			changedSpeedTime += 20f;
-			if (currentSpeedFlag < speedLevelsIndex) {
-				currentSpeedFlag++;
+		if (_currentTime >= _changedSpeedTime) {
+			_changedSpeedTime += 20f;
+			if (_currentSpeedFlag < speedLevelsIndex) {
+				_currentSpeedFlag++;
 				//Debug.Log("Установили флаг скорости на " + currentSpeedFlag);
-				targetStrapSpeed = speedLevels [currentSpeedFlag];
+				_targetStrapSpeed = _speedLevels [_currentSpeedFlag];
 			}
 		}
-		SmoothSpeedIncreasing (targetStrapSpeed);
+		SmoothSpeedIncreasing (_targetStrapSpeed);
 
 	}
 
 	void SmoothSpeedIncreasing(float speedLevel)
 	{
-		if (currentStrapSpeed < speedLevel) {
-			currentStrapSpeed += 0.25f;
+		if (_currentStrapSpeed < speedLevel) {
+			_currentStrapSpeed += 0.25f;
 			//Debug.Log(currentStrapSpeed);
 		}
 		NotifyObservers();

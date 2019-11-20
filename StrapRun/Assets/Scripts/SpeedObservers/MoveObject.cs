@@ -8,15 +8,15 @@ public class MoveObject : MonoBehaviour, ISpeedObserver {
 
 	public OBJECT_TYPE movingObjectType;
 	public MOVING_DIRECTION movingDiraction;
-	float speed;
-	float maxAliveTime;
-	float bornObjectTime;
-	float currentTime;
-	bool isGamePaused = false;
-	bool isInitialized = false;
-	Vector3 leftDirection;
-	Vector3 rightDirection;
-	StrapsSpeedCalculationController strapsSpeedController;
+	float _speed;
+	float _maxAliveTime;
+	float _bornObjectTime;
+	float _currentTime;
+	bool _isGamePaused = false;
+	bool _isInitialized = false;
+	Vector3 _leftDirection;
+	Vector3 _rightDirection;
+	StrapsSpeedCalculationController _strapsSpeedController;
 	
 	// Use this for initialization
 	void Start () {
@@ -24,7 +24,7 @@ public class MoveObject : MonoBehaviour, ISpeedObserver {
 		RegisterToSubject ();
 		SetDiractionPoints ();
 		if (movingObjectType == OBJECT_TYPE.LIGHTSHOT)
-			speed = 30f;
+			_speed = 30f;
 	}
 	
 	// Update is called once per frame
@@ -32,11 +32,11 @@ public class MoveObject : MonoBehaviour, ISpeedObserver {
 
 	public void UpdateFields(float newSpeed, float currentTime, bool isGamePaused)
 	{
-		if (!isInitialized)
+		if (!_isInitialized)
 			SetMaxAliveTime (currentTime);
-		speed = newSpeed;
-		this.isGamePaused = isGamePaused;
-		this.currentTime = currentTime;
+		_speed = newSpeed;
+		this._isGamePaused = isGamePaused;
+		this._currentTime = currentTime;
 		CheckObjectDestroy ();
 	}
 
@@ -52,7 +52,7 @@ public class MoveObject : MonoBehaviour, ISpeedObserver {
 //			Debug.Log ("Удаляюсь");
 //			strapsSpeedController.RemoveObserver (this);
 //		}
-		if(!isGamePaused)
+		if(!_isGamePaused)
 			Move ();
 	}
 	
@@ -63,13 +63,13 @@ public class MoveObject : MonoBehaviour, ISpeedObserver {
 			switch (movingDiraction) {
 			case MOVING_DIRECTION.LEFT: {
 				gameObject.transform.position = Vector3.MoveTowards (
-					this.transform.position, leftDirection, Time.deltaTime * speed);
+					this.transform.position, _leftDirection, Time.deltaTime * _speed);
 			}
 				break;
 			case MOVING_DIRECTION.RIGHT:
 			{
 				gameObject.transform.position = Vector3.MoveTowards (
-					this.transform.position, rightDirection, Time.deltaTime * speed);
+					this.transform.position, _rightDirection, Time.deltaTime * _speed);
 			}
 				break;
 			}
@@ -79,24 +79,24 @@ public class MoveObject : MonoBehaviour, ISpeedObserver {
 
 	void RegisterToSubject()
 	{
-		strapsSpeedController = GameObject.Find ("StrapsSpeedController").GetComponent<StrapsSpeedCalculationController>();
+		_strapsSpeedController = GameObject.Find ("StrapsSpeedController").GetComponent<StrapsSpeedCalculationController>();
 		if(movingObjectType == OBJECT_TYPE.STRAP)
-			strapsSpeedController.AddObserver (this);
+			_strapsSpeedController.AddObserver (this);
 
 	}
 
 	void SetDiractionPoints()
 	{
-		leftDirection = gameObject.transform.position;
-		leftDirection.x = -1000;
-		rightDirection = gameObject.transform.position;
-		rightDirection.x = 1000;
+		_leftDirection = gameObject.transform.position;
+		_leftDirection.x = -1000;
+		_rightDirection = gameObject.transform.position;
+		_rightDirection.x = 1000;
 	}
 
 	void CheckObjectDestroy()
 	{
-		if (currentTime > maxAliveTime) {
-			strapsSpeedController.RemoveObserver(this);
+		if (_currentTime > _maxAliveTime) {
+			_strapsSpeedController.RemoveObserver(this);
 			Destroy (this.gameObject);
 			//Debug.Log("Устрой дестрой");
 		}
@@ -104,7 +104,7 @@ public class MoveObject : MonoBehaviour, ISpeedObserver {
 
 	void SetMaxAliveTime(float currentTime)
 	{
-		maxAliveTime = currentTime + 10f;
-		isInitialized = true;
+		_maxAliveTime = currentTime + 10f;
+		_isInitialized = true;
 	}
 }

@@ -3,10 +3,10 @@ using System.Collections;
 
 public class GameOverChecker : MonoBehaviour, IGameManagerObserver {
 
-	GameObject player;
+	GameObject _player;
 
 	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");
+		_player = GameObject.FindGameObjectWithTag ("Player");
 		GameManager.Instanse.AddObserver (this);
 	}
 	

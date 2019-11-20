@@ -4,19 +4,22 @@ using System.Collections.Generic;
 
 public enum GAME_DIFFICULTY {EASY, NORMAL, HARD}
 public class GameManager : MonoBehaviour {
+
 	enum G_MANAGER_STATE {START_MENU, PLAY}
-	G_MANAGER_STATE gameState;
-	GAME_DIFFICULTY difficulty;
-	bool isPlayerDead;
-	bool gamePause;
-	float gameTime;
-	int score;
-	List<IGameManagerObserver> observersList = new List<IGameManagerObserver> ();
-	private static GameManager instanse;
-	public static GameManager Instanse { get {return instanse;}}
-	public int Score {get {return score;} set {score = value;}}
-	public bool GamePause {get {return gamePause;}}
-	MOVING_DIRECTION movingDiraction = MOVING_DIRECTION.LEFT;
+	G_MANAGER_STATE _gameState;
+	GAME_DIFFICULTY _difficulty;
+	MOVING_DIRECTION _movingDiraction = MOVING_DIRECTION.LEFT;
+	bool _isPlayerDead;
+	bool _gamePause;
+	float _gameTime;
+	int _score;
+	List<IGameManagerObserver> _observersList = new List<IGameManagerObserver> ();
+	private static GameManager _instanse;
+
+	public static GameManager Instanse { get {return _instanse;}}
+	public int Score {get {return _score;} set {_score = value;}}
+	public bool GamePause {get {return _gamePause;}}
+
 	// Use this for initialization
 	void Start () {
 
@@ -25,16 +28,16 @@ public class GameManager : MonoBehaviour {
 	void Awake()
 	{
 
-		if (instanse) {
+		if (_instanse) {
 			DestroyImmediate(gameObject);
 			return;
 		}
-		instanse = this;
+		_instanse = this;
 		DontDestroyOnLoad (gameObject);
 		if (Application.loadedLevel == 0)
-			gameState = G_MANAGER_STATE.START_MENU;
+			_gameState = G_MANAGER_STATE.START_MENU;
 		else if (Application.loadedLevel == 1){
-			gameState = G_MANAGER_STATE.PLAY;
+			_gameState = G_MANAGER_STATE.PLAY;
 		}
 	}
 	
@@ -45,48 +48,48 @@ public class GameManager : MonoBehaviour {
 
 	public void SetDifficulty(GAME_DIFFICULTY difficulty)
 	{
-		this.difficulty = difficulty;
-		gameState = G_MANAGER_STATE.PLAY;
+		this._difficulty = difficulty;
+		_gameState = G_MANAGER_STATE.PLAY;
 	}
 
 	public GAME_DIFFICULTY GetDifficulty()
 	{
-		return difficulty;
+		return _difficulty;
 	}
 
 	public void SetGameTime(float time)
 	{
-		gameTime = time;
+		_gameTime = time;
 		NotifyObservers ();
 	}
 
 	public void SetPause(bool pause)
 	{
-		this.gamePause = pause;
+		this._gamePause = pause;
 		NotifyObservers ();
 	}
 
 	public void AddObserver(IGameManagerObserver observer)
 	{
-		observersList.Add (observer);
+		_observersList.Add (observer);
 		//Debug.Log (observer);
 	}
 
 	public void RemoveObserver(IGameManagerObserver observer)
 	{
-		observersList.Remove (observer);
+		_observersList.Remove (observer);
 	}
 
 	public void NotifyObservers()
 	{
-		var tempObserverssList = new List<IGameManagerObserver> (observersList);
+		var tempObserverssList = new List<IGameManagerObserver> (_observersList);
 		foreach (var observer in tempObserverssList) {
-			observer.UpdateFields(gameTime, difficulty, gamePause, isPlayerDead, movingDiraction);
+			observer.UpdateFields(_gameTime, _difficulty, _gamePause, _isPlayerDead, _movingDiraction);
 		}
 	}
 
 	public void SetGameOver(bool gameOver)
 	{
-		isPlayerDead = gameOver;
+		_isPlayerDead = gameOver;
 	}
 }

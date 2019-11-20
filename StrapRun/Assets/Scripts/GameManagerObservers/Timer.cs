@@ -3,42 +3,42 @@ using System.Collections;
 
 public class Timer : MonoBehaviour, IGameManagerObserver {
 
-	float gameTime;
-	float second;
-	GameManager gameManager;
-	bool isGamePaused;
-	bool firstUpdate = false;
-	bool isPlayerDead;
+	float _gameTime;
+	float _second;
+	GameManager _gameManager;
+	bool _isGamePaused;
+	bool _firstUpdate = false;
+	bool _isPlayerDead;
 	// Use this for initialization
 	void Start () {
-		gameTime = 0;
-		second = gameTime;
-		gameManager = GameManager.Instanse;
-		isGamePaused = false;
+		_gameTime = 0;
+		_second = _gameTime;
+		_gameManager = GameManager.Instanse;
+		_isGamePaused = false;
 		GameManager.Instanse.AddObserver (this);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!isGamePaused && !isPlayerDead) {
-			gameTime += Time.deltaTime;
-			if (gameTime - second > 1) 
+		if (!_isGamePaused && !_isPlayerDead) {
+			_gameTime += Time.deltaTime;
+			if (_gameTime - _second > 1) 
 			{
 				//Debug.Log(gameTime);
-				second = gameTime;
-				gameManager.SetGameTime(second);
+				_second = _gameTime;
+				_gameManager.SetGameTime(_second);
 			}
 		}
 	}
 
 	public void UpdateFields(float time, GAME_DIFFICULTY difficulty, bool isGamePaused, bool isPlayerDead, MOVING_DIRECTION movingDiraction)
 	{
-		this.isGamePaused = isGamePaused;
-		this.isPlayerDead = isPlayerDead;
-		firstUpdate = true;;
-		if (isPlayerDead && !firstUpdate) {
-			gameTime = 0;
-			gameManager.RemoveObserver(this);
+		_isGamePaused = isGamePaused;
+		_isPlayerDead = isPlayerDead;
+		_firstUpdate = true;;
+		if (_isPlayerDead && !_firstUpdate) {
+			_gameTime = 0;
+			_gameManager.RemoveObserver(this);
 		}
 	}
 }

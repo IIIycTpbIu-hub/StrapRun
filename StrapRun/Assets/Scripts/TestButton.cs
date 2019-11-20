@@ -3,27 +3,27 @@ using System.Collections;
 
 public class TestButton : MonoBehaviour {
 
-	GameObject[] togles;
-	GameManager gameManager;
-	GAME_DIFFICULTY difficulty;
+	GameObject[] _togles;
+	GameManager _gameManager;
+	GAME_DIFFICULTY _difficulty;
 
 	public void SetDifficlultyToEasy()
 	{	
-		difficulty = GAME_DIFFICULTY.EASY;
+		_difficulty = GAME_DIFFICULTY.EASY;
 	}
 	public void SetDifficlultyToNormal()
 	{
-		difficulty = GAME_DIFFICULTY.NORMAL;
+		_difficulty = GAME_DIFFICULTY.NORMAL;
 	}
 	public void SetDifficlultyToHard()
 	{
-		difficulty = GAME_DIFFICULTY.HARD;
+		_difficulty = GAME_DIFFICULTY.HARD;
 	}
 
 	public void OnStartPressed()
 	{
-		gameManager  = GameManager.Instanse;
-		gameManager.SetDifficulty (difficulty);
+		_gameManager  = GameManager.Instanse;
+		_gameManager.SetDifficulty (_difficulty);
 		Application.LoadLevel (1);
 	}
 }

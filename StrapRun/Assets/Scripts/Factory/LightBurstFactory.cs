@@ -3,12 +3,12 @@ using System.Collections;
 
 public class LightBurstFactory : IFactory {
 
-	GameObject lightBurst;
+	GameObject _lightBurst;
 
 	public GameObject CreateProduct()
 	{
-		lightBurst = Resources.Load("Prefabs/LightBurst") as GameObject;
-		return lightBurst;
+		_lightBurst = Resources.Load("Prefabs/LightBurst") as GameObject;
+		return _lightBurst;
 	}
 
 }

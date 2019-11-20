@@ -6,24 +6,66 @@ Direct3D:
     Vendor:   NVIDIA
     VRAM:     499 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.062 seconds
+Platform assembly: C:\Unity3DProjects\StrapRun\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Unity3DProjects\StrapRun\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Unity3DProjects\StrapRun\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Unity3DProjects\StrapRun\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Unity3DProjects\StrapRun\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Unity3DProjects\StrapRun\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.060 seconds
 desktop: 1280x1024 75Hz; virtual: 1280x1024 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-Platform assembly: C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Unity3DProjects\Builds\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Unity3DProjects\StrapRun\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Unity3DProjects\StrapRun\StrapRun_beta_0.9\StrapRunBeta9_Data\Managed\System.dll (this message is harmless)
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 198 -> priority: 1 
+  Thread -> id: cc0 -> priority: 1 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.554037 ms
+UnloadTime: 9.824545 ms
 
 Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 243.
-Total: 0.393581 ms (FindLiveObjects: 0.024873 ms CreateObjectMapping: 0.158383 ms MarkObjects: 0.198253 ms  DeleteObjects: 0.010973 ms)
+Total: 0.262265 ms (FindLiveObjects: 0.023775 ms CreateObjectMapping: 0.025604 ms MarkObjects: 0.201180 ms  DeleteObjects: 0.010607 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.897629 ms
+
+Unloading 31 unused Assets to reduce memory usage. Loaded Objects now: 181.
+Total: 0.536602 ms (FindLiveObjects: 0.025970 ms CreateObjectMapping: 0.021215 ms MarkObjects: 0.242147 ms  DeleteObjects: 0.246171 ms)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.658042 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 181.
+Total: 0.249463 ms (FindLiveObjects: 0.014631 ms CreateObjectMapping: 0.019020 ms MarkObjects: 0.205935 ms  DeleteObjects: 0.008778 ms)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.628048 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 181.
+Total: 0.265557 ms (FindLiveObjects: 0.016460 ms CreateObjectMapping: 0.019386 ms MarkObjects: 0.218737 ms  DeleteObjects: 0.009510 ms)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.671576 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 243.
+Total: 0.298844 ms (FindLiveObjects: 0.040236 ms CreateObjectMapping: 0.021215 ms MarkObjects: 0.225321 ms  DeleteObjects: 0.010241 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.658773 ms
+
+Unloading 31 unused Assets to reduce memory usage. Loaded Objects now: 181.
+Total: 0.392484 ms (FindLiveObjects: 0.016094 ms CreateObjectMapping: 0.021215 ms MarkObjects: 0.199717 ms  DeleteObjects: 0.154725 ms)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.501121 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 181.
+Total: 0.256047 ms (FindLiveObjects: 0.013899 ms CreateObjectMapping: 0.018654 ms MarkObjects: 0.213982 ms  DeleteObjects: 0.008778 ms)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.614148 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 181.
+Total: 0.294454 ms (FindLiveObjects: 0.023044 ms CreateObjectMapping: 0.019386 ms MarkObjects: 0.238855 ms  DeleteObjects: 0.012070 ms)
 

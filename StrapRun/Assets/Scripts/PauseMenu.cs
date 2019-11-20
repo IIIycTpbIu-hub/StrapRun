@@ -4,34 +4,34 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour {
 
-	GameObject pauseMenu;
-	GameObject scoreDisplay;
-	bool isActive;
+	GameObject _pauseMenu;
+	GameObject _scoreDisplay;
+	bool _isActive;
 	// Use this for initialization
 	void Start () {
-		isActive = false;
-		pauseMenu = GameObject.Find ("PausePanel");
-		scoreDisplay = GameObject.Find ("ScoreDisplay");
+		_isActive = false;
+		_pauseMenu = GameObject.Find ("PausePanel");
+		_scoreDisplay = GameObject.Find ("ScoreDisplay");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyUp(KeyCode.Escape)) {
-			if(!isActive)
+			if(!_isActive)
 			{
-				isActive = true;
-				scoreDisplay.GetComponent<Image>().enabled = !isActive;
-				scoreDisplay.GetComponentInChildren<Text>().enabled = !isActive;
-				pauseMenu.GetComponent<Image>().enabled = isActive;
-				pauseMenu.GetComponentInChildren<Text>().enabled = isActive;
+				_isActive = true;
+				_scoreDisplay.GetComponent<Image>().enabled = !_isActive;
+				_scoreDisplay.GetComponentInChildren<Text>().enabled = !_isActive;
+				_pauseMenu.GetComponent<Image>().enabled = _isActive;
+				_pauseMenu.GetComponentInChildren<Text>().enabled = _isActive;
 				GameManager.Instanse.SetPause(true);
 			}
 			else{
-				scoreDisplay.GetComponent<Image>().enabled = isActive;
-				scoreDisplay.GetComponentInChildren<Text>().enabled = isActive;
-				pauseMenu.GetComponent<Image>().enabled = !isActive;
-				pauseMenu.GetComponentInChildren<Text>().enabled = !isActive;
-				isActive = false;
+				_scoreDisplay.GetComponent<Image>().enabled = _isActive;
+				_scoreDisplay.GetComponentInChildren<Text>().enabled = _isActive;
+				_pauseMenu.GetComponent<Image>().enabled = !_isActive;
+				_pauseMenu.GetComponentInChildren<Text>().enabled = !_isActive;
+				_isActive = false;
 				GameManager.Instanse.SetPause(false);
 			}
 

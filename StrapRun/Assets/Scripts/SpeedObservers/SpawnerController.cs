@@ -4,17 +4,17 @@ using System.Collections.Generic;
 
 public class SpawnerController : MonoBehaviour, ISpeedObserver{
 
-	List<Spawner> spawnerList = new List<Spawner>();
-	float currentSpeed;
-	float currentTime;
-	float strapDistance = 3f;
-	bool isGamePaused;
-	StrapsSpeedCalculationController speedController;
+	List<Spawner> _spawnerList = new List<Spawner>();
+	float _currentSpeed;
+	float _currentTime;
+	float _strapDistance = 3f;
+	bool _isGamePaused;
+	StrapsSpeedCalculationController _speedController;
 
 	void Start()
 	{
-		speedController = GameObject.Find ("StrapsSpeedController").GetComponent<StrapsSpeedCalculationController> ();
-		speedController.AddObserver (this);
+		_speedController = GameObject.Find ("StrapsSpeedController").GetComponent<StrapsSpeedCalculationController> ();
+		_speedController.AddObserver (this);
 		//Debug.Log ("SpawnerController is registered");
 	}
 
@@ -27,48 +27,48 @@ public class SpawnerController : MonoBehaviour, ISpeedObserver{
 	{
 		CheckSpeed (currentSpeed);
 		//this.currentSpeed = currentSpeed;
-		this.currentTime = currentTime;
-		this.isGamePaused = isGamePaused;
+		_currentTime = currentTime;
+		_isGamePaused = isGamePaused;
 
 	}
 
 	public void AddObserver(Spawner spawner)
 	{
-		spawnerList.Add (spawner);
+		_spawnerList.Add (spawner);
 		SetStrapDistance (spawner);
 	}
 
 	public void RemoveObserver(Spawner spawner)
 	{
-		spawnerList.Remove (spawner);
+		_spawnerList.Remove (spawner);
 	}
 
 	public void NotifyOnChangeDistance(float newStrapDistance)
 	{
 		//Debug.Log (strapDistance);
-		foreach (var spawner in spawnerList) {
+		foreach (var spawner in _spawnerList) {
 			spawner.SetStrapDistance(newStrapDistance);	
 		}
 	}
 
 	public void SetStrapDistance(Spawner spawner)
 	{	
-		spawner.SetStrapDistance (strapDistance);
+		spawner.SetStrapDistance (_strapDistance);
 	}
 
 	void CalculateDistanse(float currentSpeed)
 	{
 		if (currentSpeed >= 22f)
-			strapDistance = 6f;
+			_strapDistance = 6f;
 		else if (currentSpeed >= 18f)
-			strapDistance = 5f;
+			_strapDistance = 5f;
 		else if (currentSpeed >= 14f)
-			strapDistance = 4f;
+			_strapDistance = 4f;
 		else if (currentSpeed >= 10f)
-			strapDistance = 3.5f;
+			_strapDistance = 3.5f;
 		else if (currentSpeed >= 5f)
-			strapDistance = 3f;
-		else strapDistance = 3f;
+			_strapDistance = 3f;
+		else _strapDistance = 3f;
 	}
 
 
@@ -86,9 +86,9 @@ public class SpawnerController : MonoBehaviour, ISpeedObserver{
 		else if (newSpeed >= 5f)
 			newStrapDistance = 3f;
 
-		if (newStrapDistance != strapDistance) {
-			strapDistance = newStrapDistance;
-			NotifyOnChangeDistance (strapDistance);
+		if (newStrapDistance != _strapDistance) {
+			_strapDistance = newStrapDistance;
+			NotifyOnChangeDistance (_strapDistance);
 		}
 	}
 }

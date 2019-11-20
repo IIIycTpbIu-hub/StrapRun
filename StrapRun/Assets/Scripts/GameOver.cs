@@ -3,17 +3,17 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour {
-	GameObject gameOverMessage;
-	GameManager gameManager;
+	GameObject _gameOverMessage;
+	GameManager _gameManager;
 	// Use this for initialization
 	void Start () {
-		gameOverMessage = GameObject.Find ("UI");
-		gameManager = GameManager.Instanse;
-		Text text = gameOverMessage.GetComponentInChildren<Text>();
+		_gameOverMessage = GameObject.Find ("UI");
+		_gameManager = GameManager.Instanse;
+		Text text = _gameOverMessage.GetComponentInChildren<Text>();
 		text.text = "GAME OVER \n" + "Difficulty: " + 
-			gameManager.GetDifficulty ().ToString () + "\n" + "Score: " + 
-				gameManager.Score.ToString ();
-		gameManager.Score = 0;
+			_gameManager.GetDifficulty ().ToString () + "\n" + "Score: " + 
+				_gameManager.Score.ToString ();
+		_gameManager.Score = 0;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +23,7 @@ public class GameOver : MonoBehaviour {
 
 	public void LoadLevel1()
 	{
-		gameManager.SetGameOver (false);
+		_gameManager.SetGameOver (false);
 		Application.LoadLevel (1);
 	}
 
